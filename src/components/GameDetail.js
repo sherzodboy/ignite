@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { smallImage } from "../util";
 //redux
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -89,18 +88,14 @@ const GameDetail = ({ pathId }) => {
             <Media>
               <motion.img
                 layoutId={`image ${pathId}`}
-                src={smallImage(game?.background_image, 1280)}
+                src={game?.background_image}
                 alt={game?.background_image}
               />
             </Media>
             <Description>{game.description_raw}</Description>
             <div className="gallery">
               {screen.results?.map((screen) => (
-                <img
-                  src={smallImage(screen?.image, 1280)}
-                  key={screen?.id}
-                  alt={screen?.image}
-                />
+                <img src={screen?.image} key={screen?.id} alt={screen?.image} />
               ))}
             </div>
           </Detail>
