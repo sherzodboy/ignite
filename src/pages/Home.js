@@ -3,10 +3,11 @@ import GameDetail from "../components/GameDetail";
 import { useDispatch, useSelector } from "react-redux";
 import { loadGames } from "./../actions/gamesAction";
 import Game from "../components/Game";
+import { useLocation } from "react-router-dom";
 // styling and amimation
 import styled from "styled-components";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
-import { useLocation } from "react-router-dom";
+import { fadaIn } from "../animations";
 
 const Home = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ const Home = () => {
   );
 
   return (
-    <GameList>
+    <GameList variants={fadaIn} initial="hidden" animate="show">
       <LayoutGroup type="crossfade">
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
